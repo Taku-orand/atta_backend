@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_11_063802) do
+ActiveRecord::Schema.define(version: 2021_09_11_071249) do
 
   create_table "items", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2021_09_11_063802) do
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
-    t.integer "phone"
+    t.string "phone"
     t.string "email"
     t.string "password"
     t.datetime "created_at", precision: 6, null: false
