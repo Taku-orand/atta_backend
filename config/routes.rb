@@ -5,4 +5,9 @@ Rails.application.routes.draw do
   post 'items/create' => 'items#create'
   patch 'items/update/:id' => 'items#update'
   delete 'items/destroy/:id' => 'items#destroy'
+  namespace :api do
+    namespace :v1 do
+      resources :ping
+    end
+  end
 end
