@@ -1,6 +1,10 @@
 class ItemsController < ApplicationController
   def index
-    
+    render json: { item: {
+        content: true,
+        found: true
+        }
+      }
   end
 
   def show
