@@ -1,11 +1,7 @@
-module Api
-  module V1
-    class PingController < ApplicationController
-      def index
-        render json: {
-            message: 'Pong'
-        }
-      end
+class Api::V1::PingController < ApplicationController
+    def index
+      render json: {
+        message: 'Pong'
+      }
     end
-  end
 end
