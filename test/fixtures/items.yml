@@ -3,13 +3,11 @@
 one:
   user: one
   name: MyString
-  details: MyText
-  map_url: MyString
+  content: MyText
   qr_code: MyString
 
 two:
   user: two
   name: MyString
-  details: MyText
-  map_url: MyString
+  content: MyText
   qr_code: MyString
