@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       resources :secured
       resources :users
       resources :items
+      resources :lost_items
     end
   end
 end
