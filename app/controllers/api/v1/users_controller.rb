@@ -1,10 +1,18 @@
 class Api::V1::UsersController < ApplicationController
   before_action :authenticate_user
-  def index
-  end
-
-  def create
-    
+  def show
+    begin
+      user = User.find_by(sub: current_user.sub)
+      render json: {
+        found: true,
+        user: user
+      }
+    rescue => exception
+      render json: {
+        found: false,
+        error: exception
+      }
+    end
   end
 
   def update
