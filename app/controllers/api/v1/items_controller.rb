@@ -1,10 +1,11 @@
 class Api::V1::ItemsController < ApplicationController
   before_action :authenticate_user
   def index
-    render json: { item: {
-        content: true,
+    items = Item.where(user_id: current_user.id)
+
+    render json: {
+        items: items,
         found: true
-        }
       }
   end
 
@@ -28,8 +29,7 @@ class Api::V1::ItemsController < ApplicationController
   end
 
   def create
-    item = receiveBody[:item]
-    new_item = Item.new(item)
+    new_item = Item.new(items_params)
 
     begin
       new_item.save!
@@ -57,5 +57,9 @@ class Api::V1::ItemsController < ApplicationController
   private
   def receiveBody
     JSON.parse(request.body.read, {:symbolize_names => true})
+  end
+
+  def items_params
+    params.require(:item).permit(:name, :content, :qr_code).merge(user_id: current_user.id)
   end
 end
