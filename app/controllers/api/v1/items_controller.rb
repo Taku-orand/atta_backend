@@ -33,7 +33,10 @@ class Api::V1::ItemsController < ApplicationController
 
     begin
       new_item.save!
-      render json: {created: true}
+      render json: {
+        created: true,
+        id: new_item.id
+      }
     rescue => exception
       render json: {created: false}
     end
