@@ -14,10 +14,9 @@ class Api::V1::ItemsController < ApplicationController
 
     begin
       item = Item.find(item_id)
-      render json: { item: {
-        content: item,
-        found: true
-        }
+      render json: { 
+          item: item,
+          found: true
       }
     rescue => exception
       render json: { item: {
