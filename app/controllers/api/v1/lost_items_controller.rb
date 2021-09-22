@@ -32,4 +32,31 @@ class Api::V1::LostItemsController < ApplicationController
       }
     end
   end
+
+  # QRコードのidとverification_idがそれぞれ一致するかどうか
+  def is_valid?
+    item_ids = item_ids_params
+    begin
+      item = Item.find(item_ids[:id])
+      if item.verification_id == item_ids[:verification_id].to_i
+        render json: {
+          isValid: true
+        }
+      else
+        render json: {
+          isValid: false
+        }
+      end
+    rescue => exception
+      render json: {
+        isValid: false,
+        error: exception
+      }
+    end
+  end
+
+  private
+  def item_ids_params
+    params.require(:item).permit(:id, :verification_id)
+  end
 end
