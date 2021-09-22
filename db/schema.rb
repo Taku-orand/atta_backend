@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_22_042627) do
+ActiveRecord::Schema.define(version: 2021_09_22_050815) do
 
   create_table "items", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2021_09_22_042627) do
     t.text "qr_code"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "verification_id"
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
