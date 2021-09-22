@@ -42,6 +42,18 @@ class Api::V1::ItemsController < ApplicationController
   end
 
   def update
+    item_id = params[:id]
+    begin
+      item = Item.find(item_id)
+      item.update!(items_params)
+      render json: {
+        updated: true
+      }
+    rescue => exception
+      render json: {
+        updated: false
+      }
+    end
   end
 
   def destroy
@@ -63,5 +75,9 @@ class Api::V1::ItemsController < ApplicationController
 
   def items_params
     params.require(:item).permit(:name, :content, :qr_code).merge(user_id: current_user.id)
+  end
+
+  def qr_code_param
+    params.require(:item).permit(:qr_code)
   end
 end
