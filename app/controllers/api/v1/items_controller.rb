@@ -47,7 +47,8 @@ class Api::V1::ItemsController < ApplicationController
       item = Item.find(item_id)
       item.update!(items_params)
       render json: {
-        updated: true
+        updated: true,
+        item: item
       }
     rescue => exception
       render json: {
