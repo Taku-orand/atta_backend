@@ -37,5 +37,11 @@ module AttaBackend
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
     config.load_defaults 6.1 and config.autoloader = :classic
+
+    if Rails.env.production?
+      # 本番環境のみの処理
+      # クロスサイトでの通信でCookieの送信を制御します。
+      config.action_dispatch.cookies_same_site_protection = :none
+    end
   end
 end
