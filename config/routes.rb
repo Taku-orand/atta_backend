@@ -1,3 +1,15 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  namespace :api do
+    namespace :v1 do
+      resources :ping
+      resources :secured
+      resource :users
+      resources :items
+      resources :lost_items do
+        collection do
+          post 'verificate_qrcode' => 'lost_items#is_valid?'
+        end
+      end
+    end
+  end
 end

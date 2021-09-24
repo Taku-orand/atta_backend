@@ -1,0 +1,16 @@
+<body>
+<%= @lost_item[:user_name] %> 様<br/>
+<br/>
+落とし物が発見されました。<br/>
+<br/>
+落とし物: <br/>
+<%= @lost_item[:item_name] %><br/>
+発見場所: <br/>
+<%= @lost_item[:foundLocation] %><br/>
+落とし物の現在地: <br/>
+<%= @lost_item[:itemDestination] %><br/>
+詳細な位置: <br/>
+<%= @lost_item[:itemDestinationDetails] %><br/>
+
+<%= link_to "Google Mapで確認", "https://maps.google.com/maps?q=#{@lost_item[:mapLocationLat]},#{@lost_item[:mapLocationLng]}", { :target => "_blank" } %>
+</body>

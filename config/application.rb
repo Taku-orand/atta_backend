@@ -36,5 +36,6 @@ module AttaBackend
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+    config.load_defaults 6.1 and config.autoloader = :classic
   end
 end
