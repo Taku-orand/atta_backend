@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_26_101917) do
+ActiveRecord::Schema.define(version: 2021_09_26_114151) do
 
   create_table "items", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -21,6 +21,15 @@ ActiveRecord::Schema.define(version: 2021_09_26_101917) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "verification_id"
     t.index ["user_id"], name: "index_items_on_user_id"
+  end
+
+  create_table "lost_item_infomations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "item_id", null: false
+    t.string "found_location"
+    t.string "item_destination_details"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_id"], name: "index_lost_item_infomations_on_item_id"
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -34,4 +43,5 @@ ActiveRecord::Schema.define(version: 2021_09_26_101917) do
   end
 
   add_foreign_key "items", "users"
+  add_foreign_key "lost_item_infomations", "items"
 end
