@@ -75,6 +75,6 @@ class Api::V1::ItemsController < ApplicationController
   end
 
   def items_params
-    params.require(:item).permit(:name, :content, :qr_code, :verification_id, :isValid).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :content, :qr_code, :verification_id).merge(user_id: current_user.id)
   end
 end

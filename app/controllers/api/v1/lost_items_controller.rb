@@ -76,6 +76,6 @@ class Api::V1::LostItemsController < ApplicationController
   end
 
   def items_params
-    params.require(:item).permit(:name, :content, :qr_code, :verification_id, :isValid)
+    params.require(:item).permit(:name, :content, :qr_code, :verification_id)
   end
 end
