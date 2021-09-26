@@ -3,9 +3,9 @@ class Api::V1::LostItemInfomationsController < ApplicationController
     item_id = params[:id]
     begin
       item = Item.find(item_id)
-      infos = item.lost_item_infomations.order(created_at: "DESC")
+      infomations = item.lost_item_infomations.order(created_at: "DESC")
       render json: {
-        lost_item_infos: infos,
+        lost_item_infomations: infomations,
         found: true
       }
     rescue => exception
@@ -39,9 +39,9 @@ class Api::V1::LostItemInfomationsController < ApplicationController
       render json: {deleted: false}
     end
   end
-  
+
   private
   def lostItemInfomation_params
-    params.require(:lost_item_infomation).permit(:item_id, :found_location, :item_destination_details)
+    params.require(:lostItemInfomation).permit(:item_id, :found_location, :item_destination_details)
   end
 end
