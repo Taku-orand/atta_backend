@@ -24,11 +24,26 @@ class Api::V1::LostItemsController < ApplicationController
     begin
       NotificationMailer.send_confirm_to_user(lost_item[:lostItemData]).deliver
       render json: {
-        created: true
+        notificated: true
       }
     rescue => exception
       render json: {
-        created: false
+        notificated: false
+      }
+    end
+  end
+
+  def update
+    item_id = params[:id]
+    begin
+      item = Item.find(item_id)
+      item.update!(items_params)
+      render json: {
+        updated: true
+      }
+    rescue => exception
+      render json: {
+        updated: false
       }
     end
   end
@@ -58,5 +73,9 @@ class Api::V1::LostItemsController < ApplicationController
   private
   def item_ids_params
     params.require(:item).permit(:id, :verification_id)
+  end
+
+  def items_params
+    params.require(:item).permit(:name, :content, :qr_code, :verification_id, :isValid)
   end
 end
