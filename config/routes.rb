@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       resources :secured
       resource :users
       resources :items
+      resources :lost_item_infomations
       resources :lost_items do
         collection do
           post 'verificate_qrcode' => 'lost_items#is_valid?'
