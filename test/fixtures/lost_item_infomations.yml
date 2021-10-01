@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  item: one
+  found_location: MyString
+  item_destination_details: MyString
+
+two:
+  item: two
+  found_location: MyString
+  item_destination_details: MyString
